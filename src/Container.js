@@ -15,10 +15,10 @@ export default class Container extends Component {
   }
 
   componentDidMount() {
-
+    this.performSearch();
   }
 
-  performSearch = (query) => {
+  performSearch = (query = this.props.keyword) => {
     axios.get(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${APIKey}&tags=${query}&per_page=12&format=json&nojsoncallback=1`)
       .then(response => {
         this.setState({
