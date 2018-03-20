@@ -34,13 +34,15 @@ class Container extends Component {
   render() {
     console.log(this.state.photos);
 
+    let searchForm;
+    if (this.state.url == '/search') {
+      searchForm = <SearchForm onSearch={this.performSearch} />;
+    }
+
     return (
       <div className="container">
 
-        // Turnary operator?
-        if (this.state.url === '/search') {
-          <SearchForm onSearch={this.performSearch} />
-        }
+        {searchForm}
 
         <Navigation />
 
