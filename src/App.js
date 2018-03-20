@@ -17,7 +17,7 @@ class App extends Component {
           <Route path="/cats" component={ () => <Container keyword="cats" /> } />
           <Route path="/dogs" component={ () => <Container keyword="dogs" /> } />
           <Route path="/computers" component={ () => <Container keyword="computers" /> } />
-          <Route path="/search" component={ () => <Container keyword="" /> } />
+          <Route path="/search" render={ (props) => <Container url={props.match.url} /> } />
         </Switch>
       </BrowserRouter>
     );

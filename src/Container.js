@@ -5,12 +5,13 @@ import Navigation from './components/Navigation';
 import PhotoContainer from './components/PhotoContainer';
 import SearchForm from './components/SearchForm';
 
-export default class Container extends Component {
+class Container extends Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      photos: []
+      photos: [],
+      url: props.url
     };
   }
 
@@ -32,10 +33,14 @@ export default class Container extends Component {
 
   render() {
     console.log(this.state.photos);
+
     return (
       <div className="container">
 
-        <SearchForm onSearch={this.performSearch} />
+        // Turnary operator?
+        if (this.state.url === '/search') {
+          <SearchForm onSearch={this.performSearch} />
+        }
 
         <Navigation />
 
@@ -45,3 +50,5 @@ export default class Container extends Component {
     );
   }
 }
+
+export default Container;
