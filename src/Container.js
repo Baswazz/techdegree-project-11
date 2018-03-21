@@ -11,7 +11,8 @@ class Container extends Component {
     super(props);
     this.state = {
       photos: [],
-      url: props.url
+      url: props.url,
+      loading: true
     };
   }
 
@@ -23,7 +24,8 @@ class Container extends Component {
     axios.get(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${APIKey}&tags=${query}&per_page=12&format=json&nojsoncallback=1`)
       .then(response => {
         this.setState({
-          photos: response.data.photos.photo
+          photos: response.data.photos.photo,
+          loading: false
         });
       })
       .catch(error => {
@@ -35,7 +37,7 @@ class Container extends Component {
     console.log(this.state.photos);
 
     let searchForm;
-    if (this.state.url == '/search') {
+    if (this.state.url === '/search') {
       searchForm = <SearchForm onSearch={this.performSearch} />;
     }
 
@@ -46,8 +48,10 @@ class Container extends Component {
 
         <Navigation />
 
-        <PhotoContainer data={this.state.photos} />
-
+        <PhotoContainer
+          data={this.state.photos}
+          loading={this.state.loading}
+        />
       </div>
     );
   }
