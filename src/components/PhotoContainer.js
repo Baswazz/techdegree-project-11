@@ -3,6 +3,7 @@ import Photo from './Photo';
 import NoPhotos from './NoPhotos';
 
 const PhotoContainer = props => {
+  // Generate photo urls
   const results = props.data;
   let photos;
   if (results.length > 0) {

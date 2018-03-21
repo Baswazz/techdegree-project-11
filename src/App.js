@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import NotFound from './components/NotFound';
 import {
   BrowserRouter,
   Route,
   Switch
 } from 'react-router-dom';
 
+// Components
 import Container from './Container';
+import NotFound from './components/NotFound';
 
 class App extends Component {
-
   render() {
     return (
       <BrowserRouter>

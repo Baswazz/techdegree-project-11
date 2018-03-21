@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 
 export default class SearchForm extends Component {
+  // State
   state = {
     searchText: ''
   }
 
+  // Get value from search input
   onSearchChange = e => {
     this.setState({ searchText: e.target.value });
   }
 
+  // Form submit handle
   handleSubmit = e => {
     e.preventDefault();
     this.props.onSearch(this.state.searchText);
